@@ -1,0 +1,50 @@
+<div class="page-wrapper">
+  <div class="success-container">
+    <div class="checkmark-circle">
+      <span class="checkmark">✓</span>
+    </div>
+
+    <h1>Registration Successful!</h1>
+    <p class="subtitle">Welcome! Your registration has been saved successfully.</p>
+
+    @if (student) {
+      <div class="details-card">
+        <h2>Your Registration Details</h2>
+        <div class="details-grid">
+          <div class="detail-item">
+            <span class="detail-label">Full Name</span>
+            <span class="detail-value">{{ student.firstName }} {{ student.lastName }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Email</span>
+            <span class="detail-value">{{ student.email }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Phone</span>
+            <span class="detail-value">{{ student.phone }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Date of Birth</span>
+            <span class="detail-value">{{ student.dateOfBirth }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="detail-label">Course</span>
+            <span class="detail-value">{{ student.course }}</span>
+          </div>
+          <div class="detail-item full-width">
+            <span class="detail-label">Address</span>
+            <span class="detail-value">{{ student.address }}</span>
+          </div>
+          @if (student.id) {
+            <div class="detail-item">
+              <span class="detail-label">Registration ID</span>
+              <span class="detail-value id-badge">#{{ student.id }}</span>
+            </div>
+          }
+        </div>
+      </div>
+    }
+
+    <a routerLink="/register" class="register-again-btn">Register Another Student</a>
+  </div>
+</div>
