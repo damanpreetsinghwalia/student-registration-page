@@ -1,0 +1,18 @@
+# .NET build artifacts
+StudentRegistrationAPI/bin/
+StudentRegistrationAPI/obj/
+StudentRegistrationAPI/*.db
+StudentRegistrationAPI/*.db-shm
+StudentRegistrationAPI/*.db-wal
+
+# Angular build artifacts and dependencies
+student-registration-frontend/node_modules/
+student-registration-frontend/dist/
+student-registration-frontend/.angular/
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.user
+.DS_Store

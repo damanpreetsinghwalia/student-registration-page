@@ -1,0 +1,146 @@
+<div class="page-wrapper">
+  <div class="form-container">
+    <div class="form-header">
+      <div class="header-icon">🎓</div>
+      <h1>Student Registration</h1>
+      <p>Fill in your details to register for a course</p>
+    </div>
+
+    <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()" novalidate>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name <span class="required">*</span></label>
+          <input
+            id="firstName"
+            type="text"
+            formControlName="firstName"
+            placeholder="Enter your first name"
+            [class.invalid]="f['firstName'].invalid && f['firstName'].touched"
+          />
+          @if (f['firstName'].invalid && f['firstName'].touched) {
+            <span class="error-msg">First name is required.</span>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name <span class="required">*</span></label>
+          <input
+            id="lastName"
+            type="text"
+            formControlName="lastName"
+            placeholder="Enter your last name"
+            [class.invalid]="f['lastName'].invalid && f['lastName'].touched"
+          />
+          @if (f['lastName'].invalid && f['lastName'].touched) {
+            <span class="error-msg">Last name is required.</span>
+          }
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email Address <span class="required">*</span></label>
+        <input
+          id="email"
+          type="email"
+          formControlName="email"
+          placeholder="Enter your email address"
+          [class.invalid]="f['email'].invalid && f['email'].touched"
+        />
+        @if (f['email'].errors?.['required'] && f['email'].touched) {
+          <span class="error-msg">Email is required.</span>
+        }
+        @if (f['email'].errors?.['email'] && f['email'].touched) {
+          <span class="error-msg">Please enter a valid email address.</span>
+        }
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="phone">Phone Number <span class="required">*</span></label>
+          <input
+            id="phone"
+            type="tel"
+            formControlName="phone"
+            placeholder="e.g. +1 555 123 4567"
+            [class.invalid]="f['phone'].invalid && f['phone'].touched"
+          />
+          @if (f['phone'].errors?.['required'] && f['phone'].touched) {
+            <span class="error-msg">Phone number is required.</span>
+          }
+          @if (f['phone'].errors?.['pattern'] && f['phone'].touched) {
+            <span class="error-msg">Please enter a valid phone number.</span>
+          }
+        </div>
+
+        <div class="form-group">
+          <label for="dateOfBirth">Date of Birth <span class="required">*</span></label>
+          <input
+            id="dateOfBirth"
+            type="date"
+            formControlName="dateOfBirth"
+            [class.invalid]="f['dateOfBirth'].invalid && f['dateOfBirth'].touched"
+          />
+          @if (f['dateOfBirth'].invalid && f['dateOfBirth'].touched) {
+            <span class="error-msg">Date of birth is required.</span>
+          }
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="course">Course <span class="required">*</span></label>
+        <select
+          id="course"
+          formControlName="course"
+          [class.invalid]="f['course'].invalid && f['course'].touched"
+        >
+          <option value="">-- Select a course --</option>
+          <option value="Computer Science">Computer Science</option>
+          <option value="Information Technology">Information Technology</option>
+          <option value="Software Engineering">Software Engineering</option>
+          <option value="Data Science">Data Science</option>
+          <option value="Cybersecurity">Cybersecurity</option>
+          <option value="Business Administration">Business Administration</option>
+          <option value="Electrical Engineering">Electrical Engineering</option>
+          <option value="Mechanical Engineering">Mechanical Engineering</option>
+          <option value="Mathematics">Mathematics</option>
+          <option value="Physics">Physics</option>
+        </select>
+        @if (f['course'].invalid && f['course'].touched) {
+          <span class="error-msg">Please select a course.</span>
+        }
+      </div>
+
+      <div class="form-group">
+        <label for="address">Address <span class="required">*</span></label>
+        <textarea
+          id="address"
+          formControlName="address"
+          rows="3"
+          placeholder="Enter your full address"
+          [class.invalid]="f['address'].invalid && f['address'].touched"
+        ></textarea>
+        @if (f['address'].invalid && f['address'].touched) {
+          <span class="error-msg">Address is required.</span>
+        }
+      </div>
+
+      @if (errorMessage) {
+        <div class="alert-error">{{ errorMessage }}</div>
+      }
+
+      <button
+        type="submit"
+        class="submit-btn"
+        [disabled]="isSubmitting"
+      >
+        @if (isSubmitting) {
+          <span>Registering...</span>
+        } @else {
+          <span>Register Now</span>
+        }
+      </button>
+
+    </form>
+  </div>
+</div>
